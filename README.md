@@ -25,8 +25,6 @@
 **Todo:** STL과 비슷하게 만들어보기, 멀티스레드 안정성 제공
 해당 코드와 문서는 구현이 끝나면 추가하도록 하겠습니다.
 
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
-
 ## Sort
 > "자, 줄 서세요. 줄 서! 다 들어가실 수 있으니까 줄 서세요, 줄 서! 이렇게 하면 오히려 더 늦어집니다!"
 > \- 어느 광대
