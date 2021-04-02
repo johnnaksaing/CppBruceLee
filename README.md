@@ -14,7 +14,7 @@
 \- ㅇㅇ(223.39)
 
 피보나치 수 구하기는 PS난이도가 높지 않고 매우 유명한 문제라, 13가지 방법으로 구현해 봤습니다.
-해당 코드와 문서는 [Fibonacci 디렉토리](http://naver.com/)에서 확인할 수 있습니다.
+해당 코드와 문서는 [Fibonacci 디렉토리](./Fibonacci/)에서 확인할 수 있습니다.
  
 **Todo:** 마크다운 문서 완성, 멀티스레드 구현
 
@@ -24,8 +24,6 @@
 
 **Todo:** STL과 비슷하게 만들어보기, 멀티스레드 안정성 제공
 해당 코드와 문서는 구현이 끝나면 추가하도록 하겠습니다.
-
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
 ## Sort
 > "자, 줄 서세요. 줄 서! 다 들어가실 수 있으니까 줄 서세요, 줄 서! 이렇게 하면 오히려 더 늦어집니다!"
