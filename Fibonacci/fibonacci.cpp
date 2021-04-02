@@ -1,7 +1,7 @@
 #pragma once
 #include "fibonacci.h"
 
-//Àç±Í, ¸Þ¸ðÀÌÁ¦ÀÌ¼Ç ¾øÀÌ ¹Ýº¹¹®À» ½á¼­ °è»êÇÏ±â
+//ï¿½ï¿½ï¿½, ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½á¼­ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 int fibo_loop(int n)
 {
 	if (n == 1 || n == 2) { return 1; }
@@ -20,14 +20,14 @@ int fibo_loop(int n)
 	}
 }
 
-//Àç±Í¸¦ ÀÌ¿ëÇÑ ¹æ¹ý. O(2^n), ÄÝ½ºÅÃ Æø¹ßÀ§Çè ÀÖÀ½.
+//ï¿½ï¿½Í¸ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½. O(2^n), ï¿½Ý½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 int fibo_NaiveRecursive(int n)
 {
 	if (n == 1 || n == 2) { return 1; }
 	else return fibo_NaiveRecursive(n - 2) + fibo_NaiveRecursive(n - 1);
 }
 
-//²¿¸® Àç±Í. LinerÇÑ È£ÃâÀÌ¶ó ½ºÅÃ ÅÍÁú À§ÇèÀÌ Àû´Ù.
+//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½. Linerï¿½ï¿½ È£ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 int fibo_TailRecursive_inner(int n, int result0, int result1)
 {
 	if (n == 1 || n == 2) { return result1; }
@@ -40,9 +40,9 @@ int fibo_TailRecursive(int n)
 }
 
 
-//µ¿Àû °èÈ¹¹ý. ±âÁ¸ÀÇ °è»êÀ» ÀúÀåÇØµÎ°í ÇÊ¿äÇÒ¶§ ²¨³»¾î ¾²¸ç, Àç±Í¸¦ ¾²Áö ¾Ê¾Æ ºü¸£°í, ¸Þ¸ð¸® ¿µ¿ª¿¡¼­ ½ºÅÃ ´ë½Å ÈüÀ» ½á¼­ ÅÍÁú °ÆÁ¤µµ Àû´Ù. O(n)
+//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¹ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ØµÎ°ï¿½ ï¿½Ê¿ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½á¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. O(n)
 
-//vector¸¦ »ç¿ëÇÑ ±¸Çö, ¼ýÀÚ¸¦ ´ã´Â vector°¡ staticÀÌ ¾Æ´Ï¶ó¼­ ¸Å È£Ãâ¸¶´Ù O(n)ÀÌ °É¸°´Ù.
+//vectorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ vectorï¿½ï¿½ staticï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ ï¿½ï¿½ È£ï¿½â¸¶ï¿½ï¿½ O(n)ï¿½ï¿½ ï¿½É¸ï¿½ï¿½ï¿½.
 int fibo_Dynamic_vector(int n)
 {
 	std::vector<int> fibos = std::vector<int>(n);
@@ -56,7 +56,7 @@ int fibo_Dynamic_vector(int n)
 	return fibos[n - 1];
 }
 
-//vector ´ë½Å mapÀ» »ç¿ëÇÑ ±¸Çö
+//vector ï¿½ï¿½ï¿½ mapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 int fibo_Dynamic(int n)
 {
 	static std::map<int, int> fibos;
@@ -74,10 +74,10 @@ int fibo_Dynamic(int n)
 }
 
 
-//ÅÆÇÃ¸´ ¸ÞÅ¸ÇÁ·Î±×·¡¹Ö(TMP). ¸¹Àº ¿¬»êÀ» ÄÄÆÄÀÏ ½Ã°£¿¡ Â«¶§¸®´Â ¹æ¹ýÀ¸·Î ·±Å¸ÀÓÀÇ ¿¬»êÀ» ÁÙÀÎ´Ù.
-// ±¸Á¶Ã¼ ¼±¾ðÀº Çì´õ ÆÄÀÏ¿¡
+//ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½(TMP). ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ Â«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.
+// ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½
 
-//ÄÄÆÄÀÏ ½ÃÁ¡¿¡ ¾Ë ¼ö ¾ø´Â »ó¼ö´Â »ç¿ëÇÒ ¼ö ¾ø´Â ÇÑ°èÁ¡ÀÌ ÀÖ´Ù.
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
 int fibo_TMP0(int n)
 {
 	if (n == 1 || n == 2) { return 1; }
@@ -85,14 +85,14 @@ int fibo_TMP0(int n)
 	else return -1;
 }
 
-//·±Å¸ÀÓ¿¡ °áÁ¤°¡´ÉÇÏ°Ô ºñÆ²Àº TMP.
+//ï¿½ï¿½Å¸ï¿½Ó¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Æ²ï¿½ï¿½ TMP.
 int fibo_TMP1(int n)
 {
 	if (n == 1 || n == 2) { return 1; }
 	else return 0;
 }
 
-//¶÷´Ù Ç¥Çö½Ä ÀÌ¿ë
+//ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½
 int fibo_Lambda_Recursive(int n)
 {
 	auto fibo = [](int n_, auto& fibo) ->int {
@@ -103,7 +103,7 @@ int fibo_Lambda_Recursive(int n)
 	return fibo(n, fibo);
 }
 
-//ÀÌ°Å vector·Î ¸ø ¾²³ª?
+//ï¿½Ì°ï¿½ vectorï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½?
 int fibo_Lambda_Dynamic(int n)
 {
 	static std::map<int, int> fibos;
@@ -135,7 +135,7 @@ int fibo_Matrix(int n)
 		0, 1
 	);
 
-	//a_iÀÇ m00 : i¹øÂ° ÇÇº¸³ªÄ¡ ¼ö
+	//a_iï¿½ï¿½ m00 : iï¿½ï¿½Â° ï¿½Çºï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½
 	for (int i = 1; i < n; i++)
 	{
 		a = a * fibo;
@@ -145,7 +145,7 @@ int fibo_Matrix(int n)
 }
 
 
-//b¸¦ n¹ø
+//bï¿½ï¿½ nï¿½ï¿½
 Matrix2x2 matrix_pow(Matrix2x2& b, int n)
 {
 	Matrix2x2 a = Matrix2x2(
@@ -157,12 +157,12 @@ Matrix2x2 matrix_pow(Matrix2x2& b, int n)
 
 	//std::cout << n ;
 	if (n & 0x1) {
-		//nÀº È¦¼ö
+		//nï¿½ï¿½ È¦ï¿½ï¿½
 		a = matrix_pow(b, (n - 1) / 2);
 		a = a * a * b;
 	}
 	else {
-		//nÀº Â¦¼ö
+		//nï¿½ï¿½ Â¦ï¿½ï¿½
 		a = matrix_pow(b, n / 2);
 		a = a * a;
 	}
@@ -211,7 +211,7 @@ int fibo_Matrix_DnQ_math(int n)
 
 }
 
-//Á¡È­½ÄÀÇ ÀÏ¹ÝÇØ. ÄÄÇ»ÅÍ¿¡¼­´Â ¿ÀÂ÷°¡ ³Ê¹« Å©´Ù.
+//ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¹ï¿½ï¿½ï¿½. ï¿½ï¿½Ç»ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¹ï¿½ Å©ï¿½ï¿½.
 float fibo_relation(int n)
 {
 	float root5 = std::sqrt(5.0f);
@@ -221,14 +221,9 @@ float fibo_relation(int n)
 
 #include <thread>
 #include <future>
-//Âü°í https://popcorntree.tistory.com/4?category=813523
-//pdf https://nms.kcl.ac.uk/colin.cooper/teachingmaterial/PAL-PDA/lectures/Lec2-Multithread.pdf
 
-//ÀÌ·±½Ã¹ß https://softwareengineering.stackexchange.com/questions/238729/can-recursion-be-done-in-parallel-would-that-make-sense
-//
-
-//¸ÖÆ¼½º·¹µå
-//·Î ±¸ÇÏ´Â¹æ¹ýÀº ³ªÁß¿¡
+//ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´Â¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½
 
 int fibo_multithread_recursive(int n)
 {
@@ -275,20 +270,20 @@ int fibo_multithread_dynamic(int n)
 
 int fibo_nacci() {
 
-	//O(2^n) ¹æ¹ýµé
+	//O(2^n) ï¿½ï¿½ï¿½ï¿½ï¿½
 	__PRINT_FIBO_AND_NAME__(12, fibo_NaiveRecursive);
 	__PRINT_FIBO_AND_NAME__(12, fibo_TailRecursive);
 	__PRINT_FIBO_AND_NAME__(12, fibo_loop);
 	
-	//O(n) ¹æ¹ýµé
+	//O(n) ï¿½ï¿½ï¿½ï¿½ï¿½
 	__PRINT_FIBO_AND_NAME__(12, fibo_Dynamic);
 	__PRINT_FIBO_AND_NAME__(12, fibo_Dynamic_vector);
 
-	//¶÷´Ù Ç¥Çö½Ä »ç¿ë
+	//ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	__PRINT_FIBO_AND_NAME__(12, fibo_Lambda_Recursive);
 	__PRINT_FIBO_AND_NAME__(12, fibo_Lambda_Dynamic);
 
-	//O(log n) ¹æ¹ýµé
+	//O(log n) ï¿½ï¿½ï¿½ï¿½ï¿½
 	__PRINT_FIBO_AND_NAME__(12, fibo_relation);
 
 	__PRINT_FIBO_AND_NAME__(12, fibo_Matrix);
@@ -296,12 +291,12 @@ int fibo_nacci() {
 	__PRINT_FIBO_AND_NAME__(12, fibo_Matrix_DnQ_callstack);
 	__PRINT_FIBO_AND_NAME__(12, fibo_Matrix_DnQ_math);
 
-	//O(1) ¹æ¹ý...?
+	//O(1) ï¿½ï¿½ï¿½...?
 	std::cout << fibo_TMP(12) << " : fibo_TMP" << "\n";
 	__PRINT_FIBO_AND_NAME__(12, fibo_constexpr);
 
 	//multithread
-	//15ºÎÅÍ ¸ÀÅÊÀÌ °¨
+	//15ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	__PRINT_FIBO_AND_NAME__(12, fibo_multithread_recursive);
 	//__PRINT_FIBO_AND_NAME__(13, fibo_multithread_dynamic);
 	return 0;
