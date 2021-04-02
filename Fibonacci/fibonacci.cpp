@@ -219,19 +219,68 @@ float fibo_relation(int n)
 }
 
 
+#include <thread>
+#include <future>
+//참고 https://popcorntree.tistory.com/4?category=813523
+//pdf https://nms.kcl.ac.uk/colin.cooper/teachingmaterial/PAL-PDA/lectures/Lec2-Multithread.pdf
+
+//이런시발 https://softwareengineering.stackexchange.com/questions/238729/can-recursion-be-done-in-parallel-would-that-make-sense
+//
+
 //멀티스레드
 //로 구하는방법은 나중에
 
-/*
-int main() {
+int fibo_multithread_recursive(int n)
+{
+	int result = 0;
+	if (n == 1 || n == 2) { result = 1; }
+	else
+	{
+		std::future<int> x, y;
+
+		x = std::async(std::launch::async, fibo_multithread_recursive, n - 1);
+		y = std::async(std::launch::async, fibo_multithread_recursive, n - 2);
+
+		//return x + y;
+		result = x.get() + y.get();
+	}
+	
+	return result;
+}
+
+int fibo_multithread_dynamic(int n) 
+{
+	static std::map<int, int> fibos;
+	fibos[0] = 1, fibos[1] = 1, fibos[2] = 2, fibos[3] = 3, fibos[4] = 5;
+
+	auto fibo = [](int n, auto& fibo)->int {
+
+		if (!fibos[n - 1])
+		{
+			fibos[n - 1] = fibo(n - 1, fibo) + fibo(n - 2, fibo);
+		}
+
+		return fibos[n - 1];
+	};
+
+	//thread t(fibo);
+	
+	//std::thread t = std::thread(fibo,n,fibo);	
+	std::future<int> x = std::async(std::launch::async, fibo_multithread_dynamic, n - 1);
+
+	return x.get();
+}
+
+
+
+int fibo_nacci() {
 
 	//O(2^n) 방법들
 	__PRINT_FIBO_AND_NAME__(12, fibo_NaiveRecursive);
 	__PRINT_FIBO_AND_NAME__(12, fibo_TailRecursive);
-	
-	//O(n) 방법들
 	__PRINT_FIBO_AND_NAME__(12, fibo_loop);
 	
+	//O(n) 방법들
 	__PRINT_FIBO_AND_NAME__(12, fibo_Dynamic);
 	__PRINT_FIBO_AND_NAME__(12, fibo_Dynamic_vector);
 
@@ -243,6 +292,7 @@ int main() {
 	__PRINT_FIBO_AND_NAME__(12, fibo_relation);
 
 	__PRINT_FIBO_AND_NAME__(12, fibo_Matrix);
+
 	__PRINT_FIBO_AND_NAME__(12, fibo_Matrix_DnQ_callstack);
 	__PRINT_FIBO_AND_NAME__(12, fibo_Matrix_DnQ_math);
 
@@ -250,6 +300,9 @@ int main() {
 	std::cout << fibo_TMP(12) << " : fibo_TMP" << "\n";
 	__PRINT_FIBO_AND_NAME__(12, fibo_constexpr);
 
+	//multithread
+	//15부터 맛탱이 감
+	__PRINT_FIBO_AND_NAME__(12, fibo_multithread_recursive);
+	//__PRINT_FIBO_AND_NAME__(13, fibo_multithread_dynamic);
 	return 0;
 }
-*/

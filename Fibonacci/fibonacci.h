@@ -142,3 +142,11 @@ int fibo_Matrix_DnQ_callstack(int n);
 
 int fibo_Matrix_DnQ_math(int n);
 float fibo_relation(int n);
+
+int fibo_multithread_recursive(int n);
+
+int fibo_multithread_dynamic(int n);
+
+#define fibo_TMP(n) fibo<n>::value
+
+int fibo_nacci(void);
