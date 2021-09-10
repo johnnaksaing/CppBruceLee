@@ -18,6 +18,10 @@
  
 **Todo:** 마크다운 문서 완성, 멀티스레드 구현
 
+## extendable-FizzBuzz
+
+확장성 높은 FizzBuzz문제 구현하기
+
 ## Linked List
 
 가장 먼저 구현해보는 자료구조
