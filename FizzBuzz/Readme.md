@@ -140,12 +140,15 @@ std::vector<Rule> Rules_lambda {rule_Div3, rule_Div5, rule_Div7, rule_Smaller10,
 
 .h와 .cpp파일을 만들어서 붙일 때, 방금 새로 정의한 struct Rule과 std::vector는 static 키워드를 달아 줬습니다. (main에서 발생하는 LNK2005에러 해결)
 
-## 추가 확장 
+## 추가 확장 세번째
 
 다음 문제는, 문자열 출력 이슈가 있겠네요.
 > 예시 1. Yass는 딱 자기만 나오게, 딴 조건이랑 같이 나오는 FizzYass나 BuzzYass같은 경우는 피했으면 좋겠어요.
-> 예시 2. 21 같은 경우 좀 보세요. FizzJassQizz라고 뜨지 않습니까. 얼마나 못생겼어요??
+> 
+> 예시 2. 21 같은 경우 FizzJassQizz라고 뜨는데, 이런 경우는 피하고 싶습니다.
+> 
 > 예시 3. 특정 규칙/숫자/범위 에서는 특정 문자열(들)만 나오게 하고 싶어요.
+> 
 > 예시 4. 요컨대, **String 출력에도 규칙을 넣을 수 없을까요?**
 
 클라이언트가 이런 경우를 던져 주면 어떻게 처리할 수 있을까요?
@@ -154,4 +157,6 @@ std::vector<Rule> Rules_lambda {rule_Div3, rule_Div5, rule_Div7, rule_Smaller10,
 이 단계에서 확장하는 룰은 다음처럼 정리해볼 수 있겠네요.
 1. string rule이 default인 경우 들어오는 문자 그대로 출력한다.
 2. out_string에는 우선순위가 있어 높은 우선순위가 낮은 우선순위를 지배한다. 
+3. 특정 룰은 transparent속성이라 낮은 우선순위를 가리지 않고 띄운다.
 
+이 경우는 생각 좀 해봐야겠습니다.
