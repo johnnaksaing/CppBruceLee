@@ -11,11 +11,20 @@ void fizzBuzz(int n) {
 
 		//conditions
 		bool bDefault = true;
+		/*
 		for (const auto& iter : Rules)
 		{
 			if (i % iter.first == 0)
 			{
 				s += Rules[iter.first];
+				bDefault = false;
+			}
+		}*/
+		for (const auto& iter : Rules_lambda) 
+		{
+			if (iter.inner_rule(i)) 
+			{
+				s += iter.msg;
 				bDefault = false;
 			}
 		}
