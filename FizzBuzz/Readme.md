@@ -1,5 +1,6 @@
 # extendable-FizzBuzz
 Ref : https://www.tomdalling.com/blog/software-design/fizzbuzz-in-too-much-detail/
+레퍼런스는 수도코드로 표현되어 있는데, 저는 C++로 구현했습니다.
 
 > 1부터 15까지 숫자 중
 3의 배수일 때 Fizz, 5의 배수일 때 Buzz를 출력하고, 3과 5의 배수일 때 FizzBuzz를 출력하고, 나머지 경우면 그냥 숫자를 출력하는 함수를 작성해주세요.
@@ -89,3 +90,68 @@ Rules_extended[Div(5)] = "Buzz";
 Rules_extended[Between(1,10)] = "Yass";
 ```
 Condition 객체를 만드는 방법은... 생각 좀 해보고 다음 시간에 적겠습니다.
+
+
+## 추가 확장 두번째
+
+생각해 왔습니다!
+모던 C++의 std::function을 이용하는 방법입니다.
+std::function은 C++의 Callable 객체를 담을 수 있는데, Rule 구조체를 만들고 여기 들어가는 Callable에 원하는 판정을 넣어 주면 되겠네요.
+
+```C++
+struct Rule 
+{
+	Rule(const std::function<bool(int)>& rule, const std::string& msg) : inner_rule(rule), msg(msg) {  }
+	
+	std::function<bool(int)> inner_rule;
+	std::string msg;
+};
+
+Rule rule_Div3		([](int num) -> bool {return num % 3 == 0; }, "Fizz");
+Rule rule_Div5		([](int num) -> bool {return num % 5 == 0; }, "Buzz");
+Rule rule_Div7		([](int num) -> bool {return num % 7 == 0; }, "Jazz");
+```
+
+Rule의 생성자에 일일이 익명함수 전체를 짜 넣는 건 코드 중복이네요. 일반적으로 흑마술로 취급받는 방법이지만 **매크로**를 써 코드를 줄여 봅시다.
+
+```C++
+#define RULE_LAMBDA(rule_disc) ([](int num) -> bool {return (rule_disc) ;})
+
+//마음껏 함수를 정의할 수 있게 되었습니다.
+Rule rule_Smaller10	(RULE_LAMBDA(num < 10), "Yass");
+Rule rule_Between15_30	(RULE_LAMBDA(num > 15 && num < 30),"Qizz");
+
+std::vector<Rule> Rules_lambda {rule_Div3, rule_Div5, rule_Div7, rule_Smaller10, rule_Between15_30};
+```
+이제 Rule이 문자열도 머금고 있으니까 std::map 대신 벡터에 담았습니다. 이제 fizzbuzz 내의 Iteration 부분에서 ```C++ std::map```을 이용하던 부분만 ```C++ std::vector```로 바꿔주면 되겠네요. 
+
+```C++
+//fizzbuzz 함수 부분
+	bool bDefault = true;
+	for (const auto& iter : Rules_lambda) 
+	{
+		if (iter.inner_rule(i)) 
+		{
+			s += iter.msg;
+			bDefault = false;
+		}
+	}
+```
+
+.h와 .cpp파일을 만들어서 붙일 때, 방금 새로 정의한 struct Rule과 std::vector는 static 키워드를 달아 줬습니다. (main에서 발생하는 LNK2005에러 해결)
+
+## 추가 확장 
+
+다음 문제는, 문자열 출력 이슈가 있겠네요.
+> 예시 1. Yass는 딱 자기만 나오게, 딴 조건이랑 같이 나오는 FizzYass나 BuzzYass같은 경우는 피했으면 좋겠어요.
+> 예시 2. 21 같은 경우 좀 보세요. FizzJassQizz라고 뜨지 않습니까. 얼마나 못생겼어요??
+> 예시 3. 특정 규칙/숫자/범위 에서는 특정 문자열(들)만 나오게 하고 싶어요.
+> 예시 4. 요컨대, **String 출력에도 규칙을 넣을 수 없을까요?**
+
+클라이언트가 이런 경우를 던져 주면 어떻게 처리할 수 있을까요?
+
+예시 2 같은 경우는 코드 외부적인 이유(디자인 등)로 인해 클라이언트가 선호하지 않는다고 가정해 보겠습니다.
+이 단계에서 확장하는 룰은 다음처럼 정리해볼 수 있겠네요.
+1. string rule이 default인 경우 들어오는 문자 그대로 출력한다.
+2. out_string에는 우선순위가 있어 높은 우선순위가 낮은 우선순위를 지배한다. 
+
