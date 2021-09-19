@@ -123,7 +123,7 @@ Rule rule_Between15_30	(RULE_LAMBDA(num > 15 && num < 30),"Qizz");
 
 std::vector<Rule> Rules_lambda {rule_Div3, rule_Div5, rule_Div7, rule_Smaller10, rule_Between15_30};
 ```
-이제 Rule이 문자열도 머금고 있으니까 std::map 대신 벡터에 담았습니다. 이제 fizzbuzz 내의 Iteration 부분에서 ```C++ std::map```을 이용하던 부분만 ```C++ std::vector```로 바꿔주면 되겠네요. 
+이제 Rule이 문자열도 머금고 있으니까 std::map 대신 벡터에 담았습니다. 이제 fizzbuzz 내의 Iteration 부분에서 ```std::map```을 이용하던 부분만 ```std::vector```로 바꿔주면 되겠네요. 
 
 ```C++
 //fizzbuzz 함수 부분
